@@ -1,0 +1,19 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.cell{
+    vertical-align: middle;
+    text-align: center;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color:azure;
+    border: 1px slategray solid;
+}
+.cell.open{
+    background-color: bisque;
+}
+.cell.flag{
+    background-color: black
+}

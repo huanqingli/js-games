@@ -1,0 +1,19 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.row{
+    height: 10px;
+}
+.cell{
+    vertical-align: middle;
+    text-align: center;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color:azure;
+    border: 1px slategray solid;
+}
+.cell.black{
+    background-color: black;
+}
