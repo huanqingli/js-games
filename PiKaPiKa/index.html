@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./index.css"></link> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <label for="origin"> 你想说: </label>
+        <input id="origin" v-model="origin"/>
+        <button @click="encode">翻译</button>
+        <br />
+        <span> 皮卡丘语: </span>
+        <span>{{ pikapika }}</span>
+        <br />
+        <!-- <label for="origin"> 皮卡丘语: </label>
+        <input id="origin" v-model="pikapika"/>
+        <button @click="decode">翻译</button>
+        <br />
+        <span> 人话: </span>
+        <span>{{ human }}</span> -->
+
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                origin:"",
+                pikapika:"",
+                human:""
+            },
+            methods:{
+                encode(){
+                    const binarify = Array.from(this.origin).map(c => c.codePointAt(0).toString(2))
+                    const encoded = binarify.map(c => Array.from(c).map(b => b === '1' ? '‍' : '‌').join('')).join('​')
+                    this.pikapika = "皮卡"+encoded+"皮卡"
+                },
+                decode(){
+                    const binary = this.pikapika
+                        .slice(2, -2)
+                        .split('​')
+                        .map(c => Array.from(c).map(z => z === '‍' ? '1' : '0').join(''))
+                    const decoded = binary.map(b => String.fromCodePoint(parseInt(b, 2))).join('')
+                    this.human = decoded
+                }
+            },
+            created(){}
+        })
+    </script>
+    <!-- <script src="./index.js"> </script> -->
+</body>
+</html>
